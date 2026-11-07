@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>แผนการสอน ป.3 หน่วยที่ 9 การวัดความยาว</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mitr:wght@400;500;600&family=Sarabun:wght@400;500;600&display=swap">
+<style>
+/* Layout: chalkboard-green header band, then plans grouped by skill, each card led by its number set inside a long-division bracket */
+:root {
+  --bg: #f3f6f1;
+  --surface: #ffffff;
+  --ink: #17302a;
+  --muted: #5b716a;
+  --line: #d6e0da;
+  --board: #1f5b4a;
+  --board-ink: #f4f1d0;
+  --chalk: #f6c945;
+  --accent: #1f7a5f;
+  --chip: #e5efe9;
+  --display: "Mitr", "Sarabun", "Leelawadee UI", Tahoma, sans-serif;
+  --body: "Sarabun", "Leelawadee UI", Tahoma, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1a17; --surface: #16241f; --ink: #e6efe9; --muted: #9db3aa; --line: #2a3d36;
+    --board: #143d32; --board-ink: #f4f1d0; --chalk: #f6c945; --accent: #6fd1ad; --chip: #1f332c;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1a17; --surface: #16241f; --ink: #e6efe9; --muted: #9db3aa; --line: #2a3d36;
+  --board: #143d32; --board-ink: #f4f1d0; --chalk: #f6c945; --accent: #6fd1ad; --chip: #1f332c;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.6; }
+.wrap { max-width: 1040px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+header { background: var(--board); color: var(--board-ink); position: relative; overflow: hidden; }
+header .wrap { padding-block: 32px 36px; display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; }
+header::before {
+  content: "÷"; position: absolute; right: -20px; top: -70px; font-family: var(--display);
+  font-size: 300px; line-height: 1; color: rgba(255,255,255,.06); pointer-events: none;
+}
+.eyebrow { font-family: var(--display); font-size: 14px; letter-spacing: .04em; color: var(--chalk); margin: 0 0 6px; }
+h1 { font-family: var(--display); font-weight: 600; font-size: clamp(28px, 6vw, 46px); line-height: 1.2; margin: 0; text-wrap: balance; }
+.sub { margin: 10px 0 0; opacity: .9; font-size: 17px; }
+.who { margin: 14px 0 0; font-size: 15px; opacity: .85; }
+.eq { font-family: var(--display); font-size: 15px; border: 1.5px dashed rgba(244,241,208,.5); border-radius: 10px; padding: 12px 16px; text-align: center; line-height: 1.5; position: relative; }
+.eq b { color: var(--chalk); font-size: 26px; display: block; font-weight: 500; }
+
+main .wrap { padding-block: 28px 48px; display: grid; gap: 32px; }
+.group h2 { font-family: var(--display); font-weight: 500; font-size: 20px; margin: 0 0 4px; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.group h2 small { font-family: var(--body); font-size: 14px; color: var(--muted); font-weight: 400; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; margin-top: 12px; }
+
+.card {
+  display: grid; grid-template-columns: 64px 1fr; gap: 14px; align-items: start; text-align: left;
+  background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: 12px;
+  padding: 14px 16px; font: inherit; cursor: pointer; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.card:focus-visible { outline: 3px solid var(--chalk); outline-offset: 2px; }
+/* long-division bracket ⟌ around the plan number */
+.num { font-family: var(--display); font-weight: 600; font-size: 26px; color: var(--accent); position: relative; height: 52px; display: grid; place-items: center; padding-left: 8px; font-variant-numeric: tabular-nums; }
+.num::before { content: ""; position: absolute; left: 0; top: 4px; bottom: 4px; width: 10px; border-left: 3px solid var(--accent); border-radius: 0 0 0 0; border-top-left-radius: 14px 40px; }
+.num::after { content: ""; position: absolute; left: 4px; right: 0; top: 4px; border-top: 3px solid var(--accent); }
+.card .t { font-weight: 500; font-size: 15.5px; line-height: 1.45; min-width: 0; }
+.card .m { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+.chip { font-size: 12.5px; background: var(--chip); color: var(--muted); border-radius: 99px; padding: 2px 10px; }
+
+footer { color: var(--muted); font-size: 14px; }
+footer .wrap { padding-block: 0 32px; }
+
+/* viewer */
+.viewer { position: fixed; inset: 0; background: var(--bg); z-index: 20; display: grid; grid-template-rows: auto minmax(0, 1fr); grid-template-columns: minmax(0, 1fr); }
+.viewer[hidden] { display: none; }
+.vbar { background: var(--board); color: var(--board-ink); padding-top: calc(10px + env(safe-area-inset-top, 0px)); padding-bottom: 10px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: flex; gap: 12px; align-items: center; }
+.vbar h3 { font-family: var(--display); font-weight: 500; font-size: 16px; margin: 0; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.btn { font: inherit; font-size: 14px; border-radius: 8px; padding: 6px 14px; border: 1.5px solid var(--board-ink); background: transparent; color: var(--board-ink); cursor: pointer; text-decoration: none; white-space: nowrap; }
+.btn.primary { background: var(--chalk); color: #1d2a24; border-color: var(--chalk); }
+.btn:focus-visible { outline: 3px solid var(--chalk); outline-offset: 2px; }
+.pages { overflow: auto; padding-block: 16px 40px; padding-left: max(12px, env(safe-area-inset-left, 0px)); padding-right: max(12px, env(safe-area-inset-right, 0px)); display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; justify-items: center; align-content: start; }
+.pages canvas { display: block; width: 100%; max-width: 820px; height: auto; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,.15); border-radius: 4px; }
+.status { color: var(--muted); padding: 40px 0; text-align: center; }
+
+@media (max-width: 560px) {
+  header .wrap { grid-template-columns: 1fr; }
+  .eq { display: none; }
+  .vbar .hide-sm { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .card { transition: none; } .card:hover { transform: none; } }
+</style>
+
+<style>
+:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+body { margin: 0; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">แผนการจัดการเรียนรู้แบบ Active Learning · คณิตศาสตร์ ป.3 ภาคเรียนที่ 2</p>
+      <h1>หน่วยการเรียนรู้ที่ 9 การวัดความยาว</h1>
+      <p class="sub">20 แผน · 20 ชั่วโมง — เลือกแผนที่ต้องการเปิดอ่าน</p>
+      <p class="who">ครูหนึ่งฤทัย นิยมเดชา · โรงเรียนราษฎร์บูรณะ (มูฮำหมัดอุทิศ)</p>
+    </div>
+    <div class="eq" aria-hidden="true"><b>1 ม. = 100 ซม.</b>1 กม. = 1,000 ม. · 1 ซม. = 10 มม.</div>
+  </div>
+</header>
+
+<main><div class="wrap" id="groups"></div></main>
+<footer><div class="wrap">แตะที่แผนเพื่ออ่านในหน้านี้ หรือกด “เปิด PDF” เพื่อเปิด/บันทึกไฟล์</div></footer>
+
+<div class="viewer" id="viewer" hidden>
+  <div class="vbar">
+    <button class="btn" id="close" type="button">← กลับ</button>
+    <h3 id="vtitle"></h3>
+    <a class="btn primary" id="vpdf" href="#" target="_blank" rel="noopener">เปิด PDF</a>
+  </div>
+  <div class="pages" id="pages"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js"></script>
+<script>
+const PLANS = [[1, "การวัดความยาวเป็นเซนติเมตรและมิลลิเมตร", "ซม. มม."], [2, "ความยาวเป็นเมตรและเซนติเมตร กิโลเมตรและเมตร", "ม. ซม. กม."], [3, "การเลือกเครื่องวัดความยาวที่เหมาะสม", "เครื่องวัด"], [4, "การเลือกหน่วยวัดความยาวที่เหมาะสม", "หน่วยวัด"], [5, "การคาดคะเนความยาวเป็นเมตรและเป็นเซนติเมตร", "คาดคะเน"], [6, "ความสัมพันธ์ระหว่างเซนติเมตรกับมิลลิเมตร", "ซม. กับ มม."], [7, "ความสัมพันธ์ระหว่างเมตรกับเซนติเมตร", "ม. กับ ซม."], [8, "ความสัมพันธ์ระหว่างกิโลเมตรกับเมตร", "กม. กับ ม."], [9, "การเปรียบเทียบความยาวโดยใช้ความสัมพันธ์ระหว่างเซนติเมตรและมิลลิเมตร", "ซม. กับ มม."], [10, "การเปรียบเทียบความยาวโดยใช้ความสัมพันธ์ระหว่างเมตรและเซนติเมตร", "ม. กับ ซม."], [11, "การเปรียบเทียบความยาวโดยใช้ความสัมพันธ์ระหว่างกิโลเมตรและเมตร", "กม. กับ ม."], [12, "การบวกเกี่ยวกับความยาว", "บวก"], [13, "การลบเกี่ยวกับความยาว", "ลบ"], [14, "การคูณเกี่ยวกับความยาว", "คูณ"], [15, "การหารเกี่ยวกับความยาว", "หาร"], [16, "การคูณและหารเกี่ยวกับความยาว", "คูณและหาร"], [17, "โจทย์ปัญหาการบวกเกี่ยวกับความยาว", "บวก"], [18, "โจทย์ปัญหาการลบเกี่ยวกับความยาว", "ลบ"], [19, "โจทย์ปัญหาการคูณเกี่ยวกับความยาว", "คูณ"], [20, "โจทย์ปัญหาการหารเกี่ยวกับความยาว", "หาร"]];
+const GROUPS = [["การวัดและคาดคะเนความยาว", "แผนที่ 1–5", 1, 5], ["ความสัมพันธ์ของหน่วยความยาว", "แผนที่ 6–8", 6, 8], ["การเปรียบเทียบความยาว", "แผนที่ 9–11", 9, 11], ["การบวก ลบ คูณ หารเกี่ยวกับความยาว", "แผนที่ 12–16", 12, 16], ["โจทย์ปัญหาเกี่ยวกับความยาว", "แผนที่ 17–20", 17, 20]];
+const root = document.getElementById("groups");
+for (const [name, range, a, b] of GROUPS) {
+  const sec = document.createElement("section");
+  sec.className = "group";
+  sec.innerHTML = `<h2>${name} <small>${range}</small></h2><div class="grid"></div>`;
+  const grid = sec.querySelector(".grid");
+  for (const [n, title, tag] of PLANS.filter(p => p[0] >= a && p[0] <= b)) {
+    const btn = document.createElement("button");
+    btn.type = "button"; btn.className = "card"; btn.id = "plan" + n;
+    btn.innerHTML = `<span class="num">${n}</span><span class="t">แผนที่ ${n}<br>${title}<span class="m"><span class="chip">${tag}</span><span class="chip">1 ชั่วโมง</span></span></span>`;
+    btn.addEventListener("click", () => openPlan(n, title));
+    grid.appendChild(btn);
+  }
+  root.appendChild(sec);
+}
+
+const viewer = document.getElementById("viewer"), pages = document.getElementById("pages");
+let token = 0, lastBtn = null;
+
+async function openPlan(n, title) {
+  const my = ++token;
+  lastBtn = document.getElementById("plan" + n);
+  const url = `pdf/plan${n}.pdf`;
+  document.getElementById("vtitle").textContent = `แผนที่ ${n} · ${title}`;
+  document.getElementById("vpdf").href = url;
+  pages.innerHTML = `<p class="status">กำลังโหลดแผนที่ ${n}…</p>`;
+  viewer.hidden = false; document.body.style.overflow = "hidden";
+  document.getElementById("close").focus();
+  try {
+    if (!window.pdfjsLib) throw new Error("pdf.js not loaded");
+    const pdf = await pdfjsLib.getDocument(url).promise;
+    if (my !== token) return;
+    pages.innerHTML = "";
+    const width = Math.min(pages.clientWidth - 24, window.innerWidth - 24, 820);
+    const dpr = Math.min((window.devicePixelRatio || 1) * 1.5, 3);
+    for (let i = 1; i <= pdf.numPages; i++) {
+      const page = await pdf.getPage(i);
+      if (my !== token) return;
+      const base = page.getViewport({ scale: 1 });
+      const vp = page.getViewport({ scale: (width / base.width) * dpr });
+      const c = document.createElement("canvas");
+      c.width = vp.width; c.height = vp.height;
+      c.setAttribute("aria-label", `หน้า ${i} จาก ${pdf.numPages}`);
+      pages.appendChild(c);
+      await page.render({ canvasContext: c.getContext("2d"), viewport: vp }).promise;
+    }
+  } catch (e) {
+    if (my === token) pages.innerHTML = `<p class="status">แสดงแผนในหน้านี้ไม่ได้ กด “เปิด PDF” ด้านบนเพื่อเปิดไฟล์โดยตรง</p>`;
+  }
+}
+function closeViewer() {
+  token++; viewer.hidden = true; pages.innerHTML = ""; document.body.style.overflow = "";
+  if (lastBtn) lastBtn.focus();
+}
+document.getElementById("close").addEventListener("click", closeViewer);
+document.addEventListener("keydown", e => { if (e.key === "Escape" && !viewer.hidden) closeViewer(); });
+
+const m = /^#?plan(\d{1,2})$/.exec(location.hash);
+if (m) { const p = PLANS.find(x => x[0] === +m[1]); if (p) openPlan(p[0], p[1]); }
+</script>
+
+</body>
+</html>
